@@ -1,1 +1,1 @@
-# IT2320-ThuTNguyen-Fall2022
+# IT2320 Thu T Nguyen Fall2022
