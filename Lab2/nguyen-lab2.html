@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Fibonacci Sequence</title> 
+   <script>
+       "use strict"
+       var numFib = prompt("How many numbers in the sequence?"); 
+	   numFib = parseFloat(numFib);
+       while(numFib < 3) {
+          alert("The sequence must have 3 or more numbers.");
+          numFib = prompt("Re-enter number: "); 
+       }
+       if (numFib >= 3) {
+	      var myFib = [];  // declare the array
+		  myFib[0] = 0;
+		  myFib[1] = 1;
+		  // fill the array
+		  for (let i = 2; i < numFib; i++) {
+		     myFib[i] = myFib[myFib.length -1] + myFib[myFib.length-2];
+		  }
+		  // write out the results
+		  document.writeln("Fibonacci Sequence: ");
+		  for (let i = 0; i < myFib.length; i++) {
+		     document.writeln(myFib[i]);
+		  }
+	   }
+	   document.write("<br>");
+	   // calculate the ratio
+	   var ratio = myFib[myFib.length-1]/myFib[myFib.length-2];
+	   document.writeln("Ratio: " + ratio);
+	</script>
+</head> 
+<body>
+   <h2>Thu T Nguyen - IT 2320 - Lab 2</h2>
+   gee, why did this come out at the bottom?
+</body> 
+</html>
