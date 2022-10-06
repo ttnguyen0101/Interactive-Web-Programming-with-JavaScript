@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 5 - Stopwatch</title>
+    <style>
+        .container {
+			display: flexbox;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		 }
+		 #display {
+			font-size: xx-large;
+		 }
+    </style>
+    <script>
+        "use script"
+		var timer;
+		var tenths = 0;
+		var seconds = 0;
+		var minutes = 0;
+		var running = false;
+		
+		function startTimer() {
+		    timer  = setInterval(displayTime, 100);
+			running = true;
+			if (running==true) {
+				document.getElementById("start").disabled = true;
+			}
+		}
+
+		function stopTimer() {
+			clearInterval(timer);
+			document.getElementById("start").disabled = false;
+		}
+
+		function resetTimer() {
+			tenths = 0;
+			seconds = 0;
+			minutes = 0;
+			window.clearTimeout(timer);
+			document.getElementById("start").disabled = false;	
+			document.getElementById("display").innerHTML =  "0" + minutes + ":0" + seconds + "." + tenths;
+		}
+		
+		function displayTime() {
+			tenths++;
+			if (tenths==10) {
+				tenths = 0;
+				seconds++;
+			}
+			if (seconds==60) {
+				seconds = 0;
+				minutes++;
+			}
+			if (seconds < 10 && minutes < 10) {
+				document.getElementById("display").innerHTML = "0" + minutes + ":0" + seconds + "." + tenths;
+			} else if (seconds >= 10 && minutes < 10) {
+				document.getElementById("display").innerHTML = "0" + minutes + ":" + seconds + "." + tenths;
+			} else if (seconds < 10 && minutes >= 10) {
+				document.getElementById("display").innerHTML =  minutes + ":0" + seconds + "." + tenths;
+			} else {
+				document.getElementById("display").innerHTML =  minutes + ":" + seconds + "." + tenths;
+			}
+
+		}
+		
+		window.onload = function() {
+		   document.getElementById("start").onclick = startTimer;
+		   document.getElementById("stop").onclick = stopTimer;
+		   document.getElementById("reset").onclick = resetTimer;
+		   
+		}
+        
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h2>Thu T Nguyen - IT 2320 - Lab 5</h2>
+		<span id="display" >00:00.0</span><br /><br/>
+		<button type="button" id="start" onclick="startTimer()">START</button>
+		<button type="button" id="stop" onclick="stopTimer()">STOP</button>
+		<button type="button" id="reset" onclick="resetTimer()">RESET</button>
+	</div>
+</body>
+</html>
