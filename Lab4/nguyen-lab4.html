@@ -116,14 +116,14 @@
 		      document.getElementById("password2Label").className ="blacktext";
 		   }
 
-		   //check password
-		   if (password !=password2) {
+		   //check password when both texts are filled
+		   if (password==password2 && password!="" & password2!="") {
+				document.getElementById("passwordLabel").className ="blacktext";
+				document.getElementById("password2Label").className ="blacktext";
+		   } else {
 				formGood = false;
 				document.getElementById("passwordLabel").className ="redtext";
 				document.getElementById("password2Label").className ="redtext";
-		   } else {
-				document.getElementById("passwordLabel").className ="blacktext";
-				document.getElementById("password2Label").className ="blacktext";
 		   }
 
 		   // if OK submit form
