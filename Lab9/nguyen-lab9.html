@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT 2320 Lab 8 Ajax & JSON</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script>
+            "use script"
+            $("#go").click(function() {
+                //api key: b5057ba16fd58dd6b1d64a21eee61191
+                //var zip = "44144";
+                var zip = $("#zip").val();
+                var url = "https://api.openweathermap.org/data/2.5/weather?zip="+ zip +",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
+                console.log(url);
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    dataType: "json"
+                }).done(function (weatherResponse) {
+                    $("#city").html(weatherResponse.name);
+                    $("#condition").html(weatherResponse.weather.main);
+                    $("#temp").html(weatherResponse.main.temp);
+                    $("#wind").html(weatherResponse.wind.speed);
+                    $("#humid").html(weatherResponse.main.humidity);
+                    $("#tempMixMax").html(weatherResponse.main.temp_min, weatherResponse.main.temp_max);
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <h2>Thu T Nguyen - IT 2320 - Lab 9 Weather APIs</h2>
+        <span>Insert Zip Code: <input type="text" id="zip"><button id="go">GO</button></span><br>
+        <span id="city">City: </span><br>
+        <span id="condition">Current Condition: </span><br>
+        <span id="temp">Temperature: </span><br>
+        <span id="wind">Wind Speed and Direction: </span><br>
+        <span id="humid">Humidity: </span><br>
+        <span id="tempMixMax">Temp Min and Max: </span>
+    </body>
+</html>
