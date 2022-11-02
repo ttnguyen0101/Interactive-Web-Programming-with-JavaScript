@@ -5,24 +5,26 @@
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script>
             "use script"
-            $("#go").click(function() {
-                //api key: b5057ba16fd58dd6b1d64a21eee61191
-                var zip = $("#zip").val();
-                var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
-                console.log(url);
-                $.ajax({
-                    method: "GET",
-                    url: url,
-                    dataType: "json"
-                }).done(function (weatherResponse) {
-                    $("#city").html("City: " + weatherResponse.name);
-                    /*$("#condition").html(weatherResponse.weather.main);
-                    $("#temp").html(weatherResponse.main.temp);
-                    $("#wind").html(weatherResponse.wind.speed);
-                    $("#humid").html(weatherResponse.main.humidity);
-                    $("#tempMixMax").html(weatherResponse.main.temp_min, weatherResponse.main.temp_max);*/
+            /*window.onload = function() {
+                $("#go").click(function() {
+                    //api key: b5057ba16fd58dd6b1d64a21eee61191
+                    var zip = $("#zip").val();
+                    var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
+                    console.log(url);
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                        dataType: "json"
+                    }).done(function (weatherResponse) {
+                        $("#city").html("City: " + weatherResponse.name);
+                        $("#condition").html("Condition: " + weatherResponse.weather[0].main);
+                        $("#temp").html("Temperature: " + weatherResponse.main.temp);
+                        $("#wind").html("Wind Speed and Direction: " + weatherResponse.wind.speed);
+                        $("#humid").html("Humidity: " + weatherResponse.main.humidity);
+                        $("#tempMixMax").html("Temp Min and Max: " + weatherResponse.main.temp_min + ", " + weatherResponse.main.temp_max);
+                    });
                 });
-            });
+            };*/
 
         </script>
     </head>
@@ -36,4 +38,24 @@
         <span id="humid">Humidity: </span><br>
         <span id="tempMixMax">Temp Min and Max: </span>
     </body>
+    <script>
+        $("#go").click(function() {
+            //api key: b5057ba16fd58dd6b1d64a21eee61191
+            var zip = $("#zip").val();
+            var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
+            console.log(url);
+            $.ajax({
+                method: "GET",
+                url: url,
+                dataType: "json"
+            }).done(function (weatherResponse) {
+                $("#city").html("City: " + weatherResponse.name);
+                $("#condition").html("Condition: " + weatherResponse.weather[0].main);
+                $("#temp").html("Temperature: " + weatherResponse.main.temp);
+                $("#wind").html("Wind Speed and Direction: " + weatherResponse.wind.speed);
+                $("#humid").html("Humidity: " + weatherResponse.main.humidity);
+                $("#tempMixMax").html("Temp Min and Max: " + weatherResponse.main.temp_min + ", " + weatherResponse.main.temp_max);
+            });
+        });
+    </script>
 </html>
