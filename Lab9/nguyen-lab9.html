@@ -7,21 +7,20 @@
             "use script"
             $("#go").click(function() {
                 //api key: b5057ba16fd58dd6b1d64a21eee61191
-                //var zip = "44144";
                 var zip = $("#zip").val();
-                var url = "https://api.openweathermap.org/data/2.5/weather?zip="+ zip +",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
+                var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
                 console.log(url);
                 $.ajax({
                     method: "GET",
                     url: url,
                     dataType: "json"
                 }).done(function (weatherResponse) {
-                    $("#city").html(weatherResponse.name);
-                    $("#condition").html(weatherResponse.weather.main);
+                    $("#city").html("City: " + weatherResponse.name);
+                    /*$("#condition").html(weatherResponse.weather.main);
                     $("#temp").html(weatherResponse.main.temp);
                     $("#wind").html(weatherResponse.wind.speed);
                     $("#humid").html(weatherResponse.main.humidity);
-                    $("#tempMixMax").html(weatherResponse.main.temp_min, weatherResponse.main.temp_max);
+                    $("#tempMixMax").html(weatherResponse.main.temp_min, weatherResponse.main.temp_max);*/
                 });
             });
 
