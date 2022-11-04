@@ -8,23 +8,27 @@
     	window.onload = function() {
 			$("#lab10").click(function() {
 				//get values
-				var string = $("#textArea").val();
+				var string = $("#textArea").val().toUpperCase();
 				var character = $("#searchChar").val();
+				var numDays = $("#numDays").val();
 				
 				//Count number of words entered
 				var words = string.split(" ");
-				console.log(words.length);
 				$("#numWords").html(words.length);
 				
 				//Count occurences of searchChar
-
+				var occurence = string.split(character);
+				$("#occur").html(occurence.length -1);
 
 				//Capitalize text
 				$("#allCaps").html(string.toUpperCase());
 
-				/*for(i = 0; i <= text.length; i++) {
+				//"Display text with searchChar removed
+				$("#removeChar").html(string.replaceAll(character, " "));
 
-				}*/
+				//Add days
+				
+
 			});
 		};
 	</script>
@@ -91,7 +95,7 @@
 			</tr>
 			<tr>
 				<td>Display the entered text with the search character <strong>removed</strong>:</td>
-				<td id="replaceChar"> **** </td>
+				<td id="removeChar"> **** </td>
 			</tr>
 			<tr>
 				<td>Add the number of days in Date Modifier to the current date<br/>Display the resulting date as MM/DD/YYYY:</td>
