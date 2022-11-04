@@ -4,7 +4,7 @@
         <title>IT 2320 Lab 9 Ajax & JSON</title>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script>
-            "use script"
+            //this script is kept here for educational purpose
             /*window.onload = function() {
                 $("#go").click(function() {
                     //api key: b5057ba16fd58dd6b1d64a21eee61191
@@ -25,22 +25,25 @@
                     });
                 });
             };*/
-
         </script>
+        <style>
+            .style { color: brown; font-weight: bold;}
+        </style>
     </head>
     <body>
+        <center>
         <h2>Thu T Nguyen - IT 2320 - Lab 9 Weather APIs</h2>
         <span>Insert Zip Code: <input type="text" id="zip"><button id="go">GO</button></span><br>
-        <span id="city">City: </span><br>
-        <span id="condition">Current Condition: </span><br>
-        <span id="temp">Temperature: </span><br>
-        <span id="wind">Wind Speed and Direction: </span><br>
-        <span id="humid">Humidity: </span><br>
-        <span id="tempMixMax">Temp Min and Max: </span>
+        <span>City: </span><span id="city" class="style">****</span><br>
+        <span>Current Condition: </span><span id="condition" class="style">****</span><br>
+        <span>Temperature (F): </span><span id="temp" class="style">****</span><br>
+        <span>Wind Speed and Direction: </span><span id="wind" class="style">****</span><br>
+        <span>Humidity: </span><span id="humid" class="style">****</span><br>
+        <span>Temp Min and Max (F): </span><span id="tempMixMax" class="style">****</span>
+        </center>
     </body>
     <script>
         $("#go").click(function() {
-            //api key: b5057ba16fd58dd6b1d64a21eee61191
             var zip = $("#zip").val();
             var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zip+",us&appid=b5057ba16fd58dd6b1d64a21eee61191&units=imperial";
             console.log(url);
@@ -49,12 +52,12 @@
                 url: url,
                 dataType: "json"
             }).done(function (weatherResponse) {
-                $("#city").html("City: " + weatherResponse.name);
-                $("#condition").html("Condition: " + weatherResponse.weather[0].main);
-                $("#temp").html("Temperature: " + weatherResponse.main.temp);
-                $("#wind").html("Wind Speed and Direction: " + weatherResponse.wind.speed);
-                $("#humid").html("Humidity: " + weatherResponse.main.humidity);
-                $("#tempMixMax").html("Temp Min and Max: " + weatherResponse.main.temp_min + ", " + weatherResponse.main.temp_max);
+                $("#city").html(weatherResponse.name);
+                $("#condition").html(weatherResponse.weather[0].main);
+                $("#temp").html(Math.round(weatherResponse.main.temp));
+                $("#wind").html(Math.round(weatherResponse.wind.speed) + ", " + weatherResponse.wind.deg);
+                $("#humid").html(weatherResponse.main.humidity);
+                $("#tempMixMax").html(Math.round(weatherResponse.main.temp_min) + ", " + Math.round(weatherResponse.main.temp_max));
             });
         });
     </script>
