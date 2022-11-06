@@ -27,7 +27,9 @@
 				$("#removeChar").html(string.replaceAll(character, " "));
 
 				//Add days
-				
+				var date = new Date();
+				date.setDate(date.getDate() + parseInt(numDays));
+				$("#addDays").html(date.toLocaleDateString());
 
 			});
 		};
@@ -99,7 +101,7 @@
 			</tr>
 			<tr>
 				<td>Add the number of days in Date Modifier to the current date<br/>Display the resulting date as MM/DD/YYYY:</td>
-				<td id="addDate"> **** </td>
+				<td id="addDays"> **** </td>
 			</tr>
 			<tr>
 				<td><input type="reset" id="reset" name="reset" value="Reset"></td>
