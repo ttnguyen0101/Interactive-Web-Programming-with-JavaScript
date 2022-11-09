@@ -8,7 +8,7 @@
     	window.onload = function() {
 			$("#lab10").click(function() {
 				//get values
-				var string = $("#textArea").val().toUpperCase();
+				var string = $("#textArea").val();
 				var character = $("#searchChar").val();
 				var numDays = $("#numDays").val();
 				
@@ -18,14 +18,26 @@
 				$("#numWords").html(words.length);
 				
 				//Count occurences of searchChar
-				var occurence = string.split(character);
-				$("#occur").html(occurence.length -1);
+				/*var occurence = string.split(character);
+				$("#occur").html(occurence.length -1);*/
+				var ct = 0;
+				for (i = 0; i < string.length; i++) {
+					if (string[i] == character.toUpperCase() || string[i] == character.toLowerCase()) {
+						ct++;
+						console.log(ct);
+					}
+				}
+				$("#occur").html(ct);
 
 				//Capitalize text
 				$("#allCaps").html(string.toUpperCase());
 
 				//"Display text with searchChar removed
-				$("#removeChar").html(string.replaceAll(character, " "));
+				//without saving the string to a variable, it goes away after the first incident			
+				var string2 = string.replaceAll(character.toUpperCase(), "");
+				//console.log(string2);
+				//console.log(character.toLowerCase());
+				$("#removeChar").html(string2.replaceAll(character.toLowerCase(), ""));
 
 				//Add days
 				var date = new Date();
