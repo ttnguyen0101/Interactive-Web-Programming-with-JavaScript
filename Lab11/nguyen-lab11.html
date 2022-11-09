@@ -12,12 +12,25 @@
             function display(x) {
                 $("#results").html(x.join("<br/>"));
             };
-            
+
             $("#submit").click(function() {
                 //get word entered
                 var word = $("#dataEntered").val();
                 //add word to array
                 array.push(word);
+                display(array);
+            });
+
+            //sort the array
+            $("#sort").click(function() {
+                array.sort();
+                display(array);
+            });
+
+            //reverse the array
+            $("#reverse").click(function() {
+                array.sort();
+                array.reverse();
                 display(array);
             });
         };
