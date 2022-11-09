@@ -6,6 +6,7 @@
     <script>
         "use script"
         window.onload = function() {
+            //declare array
             var array = [];
             
             //display function
@@ -13,6 +14,7 @@
                 $("#results").html(x.join("<br/>"));
             };
 
+            //add to array
             $("#submit").click(function() {
                 //get word entered
                 var word = $("#dataEntered").val();
@@ -29,10 +31,21 @@
 
             //reverse the array
             $("#reverse").click(function() {
-                array.sort();
+                //array.sort();
                 array.reverse();
                 display(array);
             });
+
+            //search word in array
+            $("#search").click(function() {
+                var substring = $("#searchWord").val();
+                //search the substring in array
+                var match = array.find(element => element.includes(substring));
+                //find index of element that contains substring
+                var index = array.indexOf(match);
+                $("#results").html("Element: " + match + "<br/>" + "Index: " + index);
+            });
+            
         };
     </script>
 </head>
@@ -42,8 +55,8 @@
     Enter a string: <input type="text" id="dataEntered">
     <button type="button" id="submit">Submit</button>
     <br /><br />
-    Search for this: <input type="text" id="search">
-    <button type=button">Search</button>
+    Search for this: <input type="text" id="searchWord">
+    <button type=button" id="search">Search</button>
     <br /><br />
     <button type="button" id="sort">Sort the Array</button> <button type="button" id="reverse">Reverse the Array</button> 
     <br /><br />
