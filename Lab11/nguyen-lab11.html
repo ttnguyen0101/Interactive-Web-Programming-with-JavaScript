@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IT 2320 Lab 11</title>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        "use script"
+        window.onload = function() {
+            var array = [];
+            
+            //display function
+            function display(x) {
+                $("#results").html(x.join("<br/>"));
+            };
+            
+            $("#submit").click(function() {
+                //get word entered
+                var word = $("#dataEntered").val();
+                //add word to array
+                array.push(word);
+                display(array);
+            });
+        };
+    </script>
+</head>
+<body>
+    <h2>Thu T Nguyen - IT 2320 - Lab 11</h2>
+    <h3>Working with Arrays</h3>
+    Enter a string: <input type="text" id="dataEntered">
+    <button type="button" id="submit">Submit</button>
+    <br /><br />
+    Search for this: <input type="text" id="search">
+    <button type=button">Search</button>
+    <br /><br />
+    <button type="button" id="sort">Sort the Array</button> <button type="button" id="reverse">Reverse the Array</button> 
+    <br /><br />
+    <strong>My Array Output</strong><br/>
+    <span id="results"> *** </span>
+</body></html>
