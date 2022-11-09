@@ -13,7 +13,8 @@
 				var numDays = $("#numDays").val();
 				
 				//Count number of words entered
-				var words = string.split(" ");
+				var words = string.trim().split(" "); //trim cut off empty space before and after string
+				console.log(words);
 				$("#numWords").html(words.length);
 				
 				//Count occurences of searchChar
