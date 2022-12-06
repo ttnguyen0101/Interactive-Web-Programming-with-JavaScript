@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT 2320 Lab 12</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script>
+            "use script"
+            window.onload = function() {
+                //declare array
+                //var array = [];
+
+                //Part 1 - Prime Numbers
+                //display function
+                /*function displayPrime(x) {
+                    $("#resultP").html(x.join("<br/>"));
+                };*/
+                $("#calculateP").click(function() {
+                    //get value
+                    var numPrime = $("#numberP").val();
+                });
+            };
+        </script>
+        <style>
+            .graybackground {background-color:#DDDDDD;}
+		    td {padding:10px; border: 1px solid #ddd;}
+		    table {width:50%}
+        </style>
+    </head>
+    <body>
+        <h2>Thu T Nguyen - IT 2320 - Lab 12</h2>
+        <h3>Algorithms</h3>
+        <table>
+            <tr class="graybackground">
+                <td colspan="2"><center><strong>Prime Numbers</strong></center></td>
+            </tr>
+            <tr>
+                <td>Enter a number</td>
+                <td><input type="text" id="numberP"> <button type=button" id="calculateP">Calculate</button></td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td id="resultP"></td>
+            </tr>
+            <tr class="graybackground">
+                <td colspan="2"><center><strong>Greatest Common Denominator GCD</strong></center></td>
+            </tr>
+            <tr>
+                <td>Enter 1st number</td>
+                <td><input type="text" id="number1"></td>
+            </tr>
+            <tr>
+                <td>Enter 2nd number</td>
+                <td><input type="text" id="number2"> <button type=button" id="calculateGCD">Calculate</button></td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td id="resultGCD"></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>
