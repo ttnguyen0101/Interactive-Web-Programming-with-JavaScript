@@ -5,19 +5,66 @@
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script>
             "use script"
-            window.onload = function() {
+            //Part 1 - Prime Numbers
+            function calculatePrime() {
                 //declare array
-                //var array = [];
+                var prime = [];
+                prime[0] = 1;
+                prime[1] = 2;
+                var numPrime = $("#numberP").val();
+                    for (var i=3; i<= numPrime; i+=2) {
+                        isPrime = true;
+                        for(d=3; d<= Math.ceil(Math.sqrt(i)); d++) {
+                            if (i % d ==0) {
+                                isPrime = false;
+                                break;
+                            };
+                        };
+                        if (isPrime) {
+                            prime.push(i);
+                        };
+                    };
+                    //display prime numbers
+                    resultPrime = '';
+                    for (i = 0; i < prime.length; i++) {
+                        resultPrime += String([i+1]) + ") " + prime[i] + "<br>";
+                            $("#resultP").html(resultPrime);
+                    };    
+            };
 
-                //Part 1 - Prime Numbers
-                //display function
-                /*function displayPrime(x) {
-                    $("#resultP").html(x.join("<br/>"));
-                };*/
-                $("#calculateP").click(function() {
-                    //get value
-                    var numPrime = $("#numberP").val();
-                });
+            //Part 2 - Greatest Common Denominator GCD
+            function calculateGCD() {       
+                var a = $("#a").val();
+                var b = $("#b").val();
+                var gcd = "";
+                if (a == 0) {
+                    gcd = Math.abs(b);
+                }
+                else if (b == 0) {
+                    gcd = Math.abs(a);
+                }
+                else if (a == 1 || b == 1) {
+                    gcd = 1;
+                }
+                else if (a > b) {
+                    var remainder = a % b;
+                    while (remainder != 0) {
+                        a = b;
+                        b = remainder;
+                        remainder = a % b;
+                    };
+                    gcd = b;
+                } else if(b > a) {
+                    var remainder = b % a;
+                    while (remainder != 0) {
+                        b = a;
+                        a = remainder;
+                        remainder = b % a;
+                    };
+                    gcd = a;
+                };
+                //display GCD number
+                $("#resultGCD").html(gcd);
             };
         </script>
         <style>
@@ -35,7 +82,7 @@
             </tr>
             <tr>
                 <td>Enter a number</td>
-                <td><input type="text" id="numberP"> <button type=button" id="calculateP">Calculate</button></td>
+                <td><input type="text" id="numberP"> <button type=button id="calculateP" onclick="calculatePrime();">Calculate</button></td>
             </tr>
             <tr>
                 <td>Result</td>
@@ -46,11 +93,11 @@
             </tr>
             <tr>
                 <td>Enter 1st number</td>
-                <td><input type="text" id="number1"></td>
+                <td><input type="text" id="a"></td>
             </tr>
             <tr>
                 <td>Enter 2nd number</td>
-                <td><input type="text" id="number2"> <button type=button" id="calculateGCD">Calculate</button></td>
+                <td><input type="text" id="b"> <button type=button id="calculateGCD" onclick="calculateGCD();">Calculate</button></td>
             </tr>
             <tr>
                 <td>Result</td>
