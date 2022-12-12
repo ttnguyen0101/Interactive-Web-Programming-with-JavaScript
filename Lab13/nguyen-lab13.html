@@ -12,6 +12,7 @@
             function playOneNote() {
                 for (i = 0; i < scale.length; i++) {
                     var audios = document.getElementById(scale[i]);
+                    //var audios = scale[i];
                     $("#notes").html(scale.join(" "));
                     audios.play();  
                 };    
@@ -19,6 +20,7 @@
 
             //Part 2 - play notes asynchronously
             async function playScale() {
+                var array = [];
                 for (i = 0; i < scale.length; i++) {
                     audios = document.getElementById(scale[i]);
                     var promise = new Promise((resolve, reject) => {
@@ -27,8 +29,7 @@
                     var result = await promise;
                     audios.play(); 
                     $("#notes").html(scale[i]);
-                };
-                
+                };   
             };
         </script>
     </head>

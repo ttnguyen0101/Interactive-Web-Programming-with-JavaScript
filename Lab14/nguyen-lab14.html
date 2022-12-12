@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>IT 2320 Lab 14</title>
+        <style></style>
+        <script>
+            "use script"
+            class Car {
+                constructor(make, model, color) {
+                    this.make = make;
+                    this.model = model;
+                    this.color = color;
+                };
+                describe() {
+                    return "A " + this.color + " " + this.make + " " + this.model;
+                };
+            };
+            class ClownCar extends Car {
+                describe() {
+                    return "A " + this.color + " " + this.make + " " + this.model + " Clown Car!";
+                };
+            };
+
+            function showCar() {
+                var make = document.getElementById("make").value;
+                var model = document.getElementById("model").value;
+                var color = document.getElementById("color").value;
+                var clown = document.getElementById("clown").checked;
+                if (clown) {
+                    var car = new ClownCar(make, model, color);
+                } else {
+                    var car = new Car(make, model, color);
+                }
+                document.getElementById("output").innerHTML = car.describe();
+            };
+        </script>
+    </head>
+    <body>
+        <h2>Thu T Nguyen - IT 2320 - Lab 14</h2>
+        <h3>Classes & Objects</h3>
+        <table>
+            <tr>
+                <td>Make</td>
+                <td><input type="text" id="make"></td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td><input type="text" id="model"></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td><input type="text" id="color"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="clown"></td>
+                <td>Clown Car</td>
+            </tr>
+            <tr>
+                <td><button type="button" id="goButton" onclick="showCar();">GO</button></td>
+            </tr>
+        </table>
+        <p id="output"></p>
+    </body>
+</html>
