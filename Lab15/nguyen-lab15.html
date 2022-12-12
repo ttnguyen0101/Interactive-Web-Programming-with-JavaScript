@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT 2320 Lab 14</title>
+        <style>
+            canvas { border:1px solid #c3c3c3; }
+        </style>
+    </head>
+    <body>
+        <h2>Thu T Nguyen - IT 2320 - Lab 15</h2>
+        <h3>Canvas Graphics</h3>
+        <canvas id="myCanvas" width="800" height="600">
+
+       </canvas>
+       <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
+            //top left filled square
+            ctx.beginPath();
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0,0,100,100);
+
+            //top right square
+            ctx.beginPath();
+            ctx.strokeStyle = "#FF0000";
+            ctx.strokeRect(canvas.width-100, 0, 100, 100);
+
+            //bottom left filled circle
+            ctx.beginPath();
+            ctx.arc(51, canvas.height-51, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "#008000";
+            ctx.fill();
+            ctx.strokeStyle = "#0000FF";
+            ctx.stroke(); 
+
+            //bottom right circle
+            ctx.beginPath();
+            ctx.arc(canvas.width-51, canvas.height-51, 50, 0, 2 * Math.PI);
+            ctx.strokeStyle = "#0000FF";
+            ctx.stroke(); 
+
+            //Text 
+            ctx.beginPath();
+            ctx.font = "40px Comic Sans MS";
+            ctx.fillStyle = "#888888";
+            ctx.textAlign = "center";
+            ctx.fillText("Lab 15", canvas.width/2, canvas.height/2); 
+       </script>
+    </body>
+</html>
