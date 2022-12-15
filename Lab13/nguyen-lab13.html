@@ -20,7 +20,7 @@
 
             //Part 2 - play notes asynchronously
             async function playScale() {
-                var array = [];
+                var output = "";
                 for (i = 0; i < scale.length; i++) {
                     audios = document.getElementById(scale[i]);
                     var promise = new Promise((resolve, reject) => {
@@ -28,7 +28,8 @@
                     });
                     var result = await promise;
                     audios.play(); 
-                    $("#notes").html(scale[i]);
+                    output += " " + scale[i];
+                    $("#notes").html(output);
                 };   
             };
         </script>
