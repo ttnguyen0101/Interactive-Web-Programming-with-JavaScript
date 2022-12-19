@@ -1,3 +1,2 @@
-# IT2320 Interactive Internet Programming with JavaScript
-# Fall 2022
-# Thu T Nguyen 
+# Interactive Web Programming with JavaScript
+In this course, I learned JavaScript and jQuery to make websites interactive for users. 
